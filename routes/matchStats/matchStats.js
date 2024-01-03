@@ -4,7 +4,7 @@ const router = express.Router();
 const allseason = require("../../controllers/matchStats/getMatchStats");
 
 
-router.get("/allseasons", allseason.getMatchDetails);
+router.get("/:id", allseason.getMatchStats);
 
 
 module.exports = router;
