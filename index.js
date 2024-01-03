@@ -6,6 +6,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
 const seasonRoutes = require('./routes/seasons/season-routes');
+const statsRoutes = require('./routes/matchStats/matchStats');
 
 
 module.exports.connection = new Sequelize(process.env.DB_NAME, process.env.DB_USER_NAME, process.env.DB_PASSWORD, {
@@ -15,6 +16,7 @@ module.exports.connection = new Sequelize(process.env.DB_NAME, process.env.DB_US
 
 
 app.use('/api/seasons', seasonRoutes);
+app.use('/api/stats', statsRoutes);
 // App run
 
 app.listen(process.env.PORT, () => {

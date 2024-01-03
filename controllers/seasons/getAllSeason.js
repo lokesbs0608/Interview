@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require("sequelize");
-
+const { DataTypes } = require("sequelize");
+const encryptData = require("../../enc")
 const sequelize = require("../../db");
 
 const DeliveriesUpdateTable = sequelize.define(
@@ -29,7 +29,8 @@ const getAllSeasons = async (req, res) => {
     let obj = {
       res: seasonArray,
     };
-    res.send(obj);
+    const encryptedData = encryptData(obj);
+    res.send(encryptedData);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Internal Server Error");

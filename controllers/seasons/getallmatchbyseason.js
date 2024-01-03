@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const encryptData = require("../../enc")
 
 const sequelize = require("../../db");
 
@@ -49,7 +50,8 @@ const getMatchesForSeason = async (req, res) => {
     let obj = {
       res: distinctMatches,
     };
-    res.send(obj);
+    const encryptedData = encryptData(obj);
+    res.send(encryptedData);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Internal Server Error");
