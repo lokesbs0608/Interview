@@ -8,6 +8,7 @@ const { Sequelize } = require('sequelize');
 const seasonRoutes = require('./routes/seasons/season-routes');
 const statsRoutes = require('./routes/matchStats/matchStats');
 const seasonstatsRoutes = require('./routes/seasonStats/seasonStats');
+const playerStatsRoutes = require('./routes/playerStats/playerStats');
 
 
 module.exports.connection = new Sequelize(process.env.DB_NAME, process.env.DB_USER_NAME, process.env.DB_PASSWORD, {
@@ -19,6 +20,7 @@ module.exports.connection = new Sequelize(process.env.DB_NAME, process.env.DB_US
 app.use('/api/seasons', seasonRoutes);
 app.use('/api/season_stats', seasonstatsRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/player',playerStatsRoutes)
 // App run
 
 app.listen(process.env.PORT, () => {
