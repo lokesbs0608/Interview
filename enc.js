@@ -11,4 +11,15 @@ const encryptData = (data) => {
     return encryptedData;
 }
 
-module.exports = encryptData
+// Function to decrypt the data
+const decryptData = (encryptedData) => {
+    const decipher = crypto.createDecipher('aes-256-cbc', secretKey);
+    let decryptedData = decipher.update(encryptedData, 'hex', 'utf-8');
+    decryptedData += decipher.final('utf-8');
+    return JSON.parse(decryptedData);
+}
+
+module.exports = {
+    encryptData,
+    decryptData
+};
