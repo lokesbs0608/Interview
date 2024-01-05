@@ -17,6 +17,7 @@ const userTable = require("./routes/user/user");
 
 
 
+
 app.use("/api/seasons", seasonRoutes);
 app.use("/api/season_stats", seasonstatsRoutes);
 app.use("/api/stats", statsRoutes);
