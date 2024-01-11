@@ -102,8 +102,7 @@ const getMatchesForSeason = async (req, res) => {
         }));
 
         let obj = {
-            res: extendedPointsList,
-            not_res:distinctMatches
+            res: extendedPointsList
         };
         res.send(obj);
     } catch (error) {

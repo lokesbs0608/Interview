@@ -50,7 +50,7 @@ const getMatchesForSeason = async (req, res) => {
       res: distinctMatches,
     };
     // const encryptedData = encryptData(obj);
-    res.send(obj);
+    res.status(200).send(obj);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Internal Server Error");
