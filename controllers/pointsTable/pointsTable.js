@@ -22,6 +22,7 @@ const getMatchesForSeason = async (req, res) => {
     try {
         const distinctMatches = await DeliveriesUpdateTable.findAll({
             attributes: [
+                "season",
                 "matchId",
                 "venue",
                 "winner",
@@ -102,9 +103,8 @@ const getMatchesForSeason = async (req, res) => {
 
         let obj = {
             res: extendedPointsList,
+            not_res:distinctMatches
         };
-        const encryptedData = encryptData(obj);
-        console.log(distinctMatches,'>>>>>>>>')
         res.send(obj);
     } catch (error) {
         console.error("Error:", error);

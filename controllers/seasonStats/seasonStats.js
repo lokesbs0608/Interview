@@ -68,6 +68,7 @@ const getSeasonStats = async (req, res) => {
     const IndividualBatsmanDetailsBySeason = await DeliveriesUpdateTable.findAll({
       attributes: [
         "batsman",
+      
         [Sequelize.fn("SUM", Sequelize.col("batsman_runs")), "total_season_runs"],
 
         [
@@ -76,7 +77,15 @@ const getSeasonStats = async (req, res) => {
             Sequelize.literal("CASE WHEN batsman_runs = 6 THEN 1 ELSE 0 END")
           ),
           "total_six",
-        ]
+        ],
+        [
+          Sequelize.fn(
+            "SUM",
+            Sequelize.literal("CASE WHEN batsman_runs = 4 THEN 1 ELSE 0 END")
+          ),
+          "total_four",
+        ],
+        
 
       ],
       where: { season: requestedSeason },
@@ -205,7 +214,7 @@ const getSeasonStats = async (req, res) => {
     let obj = {
       res: { statistics, team_contribution: matchDetails },
     };
-    const encryptedData = encryptData(obj);
+    // const encryptedData = encryptData(obj);
     res.send(obj);
   } catch (error) {
     console.error("Error:", error);

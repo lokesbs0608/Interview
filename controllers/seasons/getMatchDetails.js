@@ -164,7 +164,7 @@ const getMatchDetails = async (req, res) => {
       outcome: MatchDetails?.outcome,
     };
     const encryptedData = encryptData(obj);
-    res.send(encryptedData);
+    res.send(obj);
   } catch (error) {
     console.error("Error:", error);
   }
